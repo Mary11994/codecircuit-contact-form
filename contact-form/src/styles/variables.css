@@ -1,0 +1,34 @@
+/* src/styles/variables.css */
+:root {
+    --bg: #fff;
+    --fg: #111;
+    --primary: #0070f3;
+    --error: #c00;
+  }
+  [data-theme="dark"] {
+    --bg: #111;
+    --fg: #eee;
+    --primary: #0cf;
+    --error: #e44;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: sans-serif;
+  }
+  :root {
+    /* existing tokens… */
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0,0,0,0.1);
+    --card-shadow-deep: rgba(0,0,0,0.15);
+    --accent: #0070f3;
+    --border-radius: 16px;
+    --transition-speed: 0.3s;
+  }
+  [data-theme="dark"] {
+    --card-bg: #1c1c1e;
+    --card-shadow: rgba(0,0,0,0.4);
+    --card-shadow-deep: rgba(0,0,0,0.6);
+    --accent: #0cf;
+  }
+  

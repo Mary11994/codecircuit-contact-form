@@ -1,0 +1,162 @@
+/* Just a quick sanity check */
+body, html #root {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+form {
+  border: 2px dashed var(--primary); /* temporary debug border */
+  padding: 1rem;
+}
+
+form {
+  display: grid;
+  gap: 1.5rem;
+  perspective: 1000px;
+}
+
+.form-group {
+  background: var(--card-bg);
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px var(--card-shadow);
+  transform-style: preserve-3d;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+/* Tilt effect on hover */
+.form-group:hover {
+  transform: rotateX(5deg) rotateY(5deg) scale(1.02);
+  box-shadow: 0 16px 32px var(--card-shadow-deep);
+}
+
+/* Inputs stay flat on the card’s “surface” */
+.form-group input,
+.form-group textarea {
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.75rem;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition-speed);
+  transform: translateZ(20px);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+
+/* 3D label pop */
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  transform: translateZ(30px);
+}
+
+/* Error messages “float” */
+.error {
+  color: var(--accent);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  transform: translateZ(20px);
+}
+
+/* Button styling */
+button {
+  background: var(--accent);
+  color: var(--card-bg);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transform: translateZ(20px);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+button:hover:not(:disabled) {
+  transform: translateZ(30px) scale(1.03);
+  box-shadow: 0 12px 24px var(--card-shadow-deep);
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Center the form vertically & horizontally */
+.app-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;           /* full viewport height */
+  padding: 2rem;               /* optional breathing room */
+}
+
+/* Limit the form’s width to ~50% of the viewport */
+.form-wrapper {
+  width: 50vw;                 /* half the viewport width */
+  max-width: 600px;            /* never exceed this */
+  min-width: 300px;            /* never go below this */
+}
+
+/* Make the header a flex container */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* pushes CTA & toggle to the right */
+  padding: 1rem 2rem;
+}
+
+/* Style the CTA text */
+.header-cta {
+  font-size: 0.9rem;
+  color: var(--fg);
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+.header-cta strong {
+  color: var(--accent);
+}
+
+/* src/styles/ContactForm.css */
+/* reuse CSS variables from variables.css */
+.form-group { margin-bottom: 1.25rem; }
+label { display: block; margin-bottom: .25rem; }
+input, textarea {
+  width: 100%;
+  padding: .5rem;
+  border: 1px solid var(--fg);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--fg);
+}
+.error { color: var(--error); font-size: .875rem; }
+.char-counter {
+  text-align: right;
+  font-size: .75rem;
+  opacity: .6;
+}
+button {
+  margin-right: .5rem;
+  padding: .75rem 1.25rem;
+  background: var(--primary);
+  border: none; border-radius: 4px;
+  color: var(--bg);
+  cursor: pointer;
+}
+button:disabled { opacity: .5; cursor: not-allowed; }
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal {
+  background: var(--bg); padding: 2rem; border-radius: 8px;
+  max-width: 400px; width: 90%;
+}
+.modal h2 { margin-top: 0; }
+.modal button { margin-top: 1rem; }
